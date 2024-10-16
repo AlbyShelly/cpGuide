@@ -8,8 +8,10 @@ int s = 0;
 vector<int> c = {1, 3, 4};
 int n;
 int sum = 0;
+int calls = 0;
 void search(){
     
+    calls++;
     //int sum = accumulate(res.begin(), res.end(), 0);
     if(sum > n) return;
     
@@ -37,4 +39,5 @@ int main(int argc, char** argv){
     n = stoi(argv[1]);
     search();
     cout << best << "\n";
+    cout << "calls: " << calls << "\n";
 }
