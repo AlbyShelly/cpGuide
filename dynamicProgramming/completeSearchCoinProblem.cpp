@@ -10,7 +10,8 @@ int n;
 int sum = 0;
 int calls = 0;
 void search(){
-    
+    //printing the recursive tree
+    for(int i = 0; i<s; i++) cout << " "; cout << "search(" << sum << ")\n"; 
     calls++;
     //int sum = accumulate(res.begin(), res.end(), 0);
     if(sum > n) return;
