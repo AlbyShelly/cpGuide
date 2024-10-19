@@ -1,34 +1,45 @@
 #include<bits/stdc++.h>
-#define print(x) for(auto i: x) cout << i << " " ; cout << "\n";
+#define print(arr) for(auto i: arr) cout << i << " "; cout << "\n";
+
 using namespace std;
 
 int best = INT_MAX; 
-//vector<int> res;
 int s = 0;
 vector<int> c = {1, 3, 4};
 int n;
 int sum = 0;
 int calls = 0;
+int i;
+vector<int> dept;
+
 void search(){
     //printing the recursive tree
-    for(int i = 0; i<s; i++) cout << " "; cout << "search(" << sum << ")\n"; 
+    //for(int j = 0; j<s; j++) cout << " "; cout << "search(" << s << ", " << sum << ")\n"; 
     calls++;
-    //int sum = accumulate(res.begin(), res.end(), 0);
+
     if(sum > n) return;
     
     if(sum == n){
         best = min(best, s);
         return;
     }
-    
-    for(int i = 0; i<c.size(); i++){
-        //res.push_back(c[i]);
+    if(dept[sum] != INT_MAX){
+
+        best = min(best, s+dept[sum]);
+        //cout << best << "=min(" << best << "," << s << "+" << dept[sum] << ")\n";
+        return;
+    }
+
+    for(int i = 0; i<3; i++){
+        
         sum += c[i];
         s++;
-
         search();
-    
-        //res.pop_back();
+        
+        //memorization
+        if(sum <= n)
+            dept[sum] = best - s;
+
         sum -= c[i];
         s--;
     }
@@ -38,7 +49,9 @@ int main(int argc, char** argv){
     
     if(argc != 2) return 1;
     n = stoi(argv[1]);
+    dept = vector<int> (n, INT_MAX);
     search();
-    cout << best << "\n";
+    cout << "best: " << best << "\n";
     cout << "calls: " << calls << "\n";
+
 }

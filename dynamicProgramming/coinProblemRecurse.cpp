@@ -7,7 +7,7 @@ int intend = 0;
 int solve(int x){
     
     calls++;
-    for(int i = 0; i<intend; i++) cout << " "; cout << "solve(" << x << ")\n";
+//    for(int i = 0; i<intend; i++) cout << " "; cout << "solve(" << x << ")\n";
     if(x < 0) return INT_MAX;
     if(x == 0) return 0;
     
