@@ -49,7 +49,7 @@ int main(int argc, char** argv){
     
     if(argc != 2) return 1;
     n = stoi(argv[1]);
-    dept = vector<int> (n, INT_MAX);
+    dept = vector<int> (n+1, INT_MAX);
     search();
     cout << "best: " << best << "\n";
     cout << "calls: " << calls << "\n";
